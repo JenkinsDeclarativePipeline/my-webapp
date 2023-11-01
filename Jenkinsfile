@@ -63,8 +63,8 @@ pipeline
                 script
                 {
                     def build_number = currentBuild.number
-                    echo "build number: ${build_number}"
-                    //docker.build("mywebapp:${build_number}")
+                    //echo "build number: ${build_number}"
+                    docker.build("mywebapp:${build_number}")
                 }
             }
             
