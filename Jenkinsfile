@@ -50,9 +50,10 @@ pipeline
             
             steps
             {
-                def build_number = 'currentBuild.number'   
+                   
                 script
                 {
+                    def build_number = 'currentBuild.number'
                     docker.build("mywebapp:${build_number}")
                 }
             }
