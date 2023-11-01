@@ -66,7 +66,7 @@ pipeline
             }
             
         }
-        state('Docker Image Push')
+        stage('Docker Image Push')
         {
             agent
             {
@@ -82,7 +82,7 @@ pipeline
             }
 
                 
-                    /*// This step should not normally be used in your script. Consult the inline help for details.
+                /*    // This step should not normally be used in your script. Consult the inline help for details.
                     withDockerRegistry(credentialsId: 'docker_hub', url: 'https://hub.docker.com/') 
                     {
                         
