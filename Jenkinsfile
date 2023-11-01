@@ -46,13 +46,7 @@ pipeline
         }
         stage('Docker Build')
         {
-            steps
-            {
-                agent
-                {
-                    dockerfile 'true'
-                }
-            }
+            docker.build('mywebapp:0.0.1')
         }
     }
 }
