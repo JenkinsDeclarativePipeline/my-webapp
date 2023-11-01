@@ -23,10 +23,14 @@ pipeline
         {
             steps
             {
+                script
+                {
                 sh "mvn sonar:sonar \
                 -Dsonar.projectKey=maven-practice \
                 -Dsonar.host.url=http://52.64.92.59:9000 \
                 -Dsonar.login=${SONAR_CRED_PSW}"
+                }
+                
             }
         }
         stage('Maven Project Build')
