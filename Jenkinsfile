@@ -50,7 +50,7 @@ pipeline
             {
                 script
                 {
-                    docker.build('mywebapp:0.0.1')
+                    docker.build('mywebapp:0.0.1','-t indrajith/myapp:0.1')
                 }
             }
             
