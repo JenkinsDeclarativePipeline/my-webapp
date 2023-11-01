@@ -28,10 +28,17 @@ pipeline
         {
             steps
             {
-                  sh '''  mvn sonar:sonar \\
+                withCredentials([string(credentialsId: 'sonar_secret', variable: 'sonar_cred')]) 
+                {
+                    sh '''  mvn sonar:sonar \\
                           -Dsonar.projectKey=maven-practice \\
                           -Dsonar.host.url=http://52.64.92.59:9000/ \\
-                          -Dsonar.login=sqp_a39cde1e37b3368b3ce32873897575263deaed4a'''
+                          -Dsonar.login=${sonar_cred}'''
+                }
+                  /*sh '''  mvn sonar:sonar \\
+                          -Dsonar.projectKey=maven-practice \\
+                          -Dsonar.host.url=http://52.64.92.59:9000/ \\
+                          -Dsonar.login=sqp_a39cde1e37b3368b3ce32873897575263deaed4a'''*/
             }
         }
         stage('Maven Project Build')
@@ -49,12 +56,12 @@ pipeline
         {
             
             steps
-            {
-                   
+            {     
                 script
                 {
-                    def build_number = 'currentBuild.number'
-                    docker.build("mywebapp:${build_number}")
+                    def build_number = currentBuild.number
+                    echo "build number: ${build_number}"
+                    //docker.build("mywebapp:${build_number}")
                 }
             }
             
