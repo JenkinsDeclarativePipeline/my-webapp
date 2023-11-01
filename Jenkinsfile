@@ -47,11 +47,13 @@ pipeline
         }
         stage('Docker Build')
         {
+            def build_number = 'currentBuild.number'
             steps
             {
+                
                 script
                 {
-                    docker.build("mywebapp:${DOCKER_TAG}")
+                    docker.build("mywebapp:${build_number}")
                 }
             }
             
