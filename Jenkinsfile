@@ -11,6 +11,7 @@ pipeline
     environment
     {
         SONAR_CRED = credentials('sonar_secret')
+        DOCKER_TAG = "0.1.2"
     }
     stages
     {
@@ -50,7 +51,7 @@ pipeline
             {
                 script
                 {
-                    docker.build('mywebapp:0.0.1','-t indrajith/myapp:0.1')
+                    docker.build("mywebapp:${DOCKER_TAG}")
                 }
             }
             
