@@ -44,5 +44,15 @@ pipeline
                 sh 'mvn clean package'
             }
         }
+        stage('Docker Build')
+        {
+            steps
+            {
+                agent
+                {
+                    dockerfile 'true'
+                }
+            }
+        }
     }
 }
