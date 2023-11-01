@@ -46,7 +46,14 @@ pipeline
         }
         stage('Docker Build')
         {
-            docker.build('mywebapp:0.0.1')
+            steps
+            {
+                script
+                {
+                    docker.build('mywebapp:0.0.1')
+                }
+            }
+            
         }
     }
 }
