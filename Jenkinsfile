@@ -74,10 +74,8 @@ pipeline
                     // This step should not normally be used in your script. Consult the inline help for details.
                     withDockerRegistry(credentialsId: 'docker_hub', url: 'https://hub.docker.com/') 
                     {
-                        script
-                        {
-                                docker.image.push("mywebapp:${build_number}")
-                        }
+                        
+                                sh "docker push mywebapp:${build_number}"
                         
                     }
                 
