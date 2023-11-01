@@ -68,15 +68,27 @@ pipeline
         }
         state('Docker Image Push')
         {
+            agent
+            {
+                docker
+                {
+                    registryUrl 'https://hub.docker.com/'
+                    registryCredentialsId: 'docker_hub'
+                }
+            }
+            steps
+            {
+                sh "docker push mywebapp:${build_number}"
+            }
 
                 
-                    // This step should not normally be used in your script. Consult the inline help for details.
+                    /*// This step should not normally be used in your script. Consult the inline help for details.
                     withDockerRegistry(credentialsId: 'docker_hub', url: 'https://hub.docker.com/') 
                     {
                         
                                 sh "docker push mywebapp:${build_number}"
                         
-                    }
+                    }*/
                 
 
         }
