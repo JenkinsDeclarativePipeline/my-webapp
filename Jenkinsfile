@@ -72,14 +72,17 @@ pipeline
             {
                 docker
                 {
+    
                     registryUrl 'https://hub.docker.com/'
                     registryCredentialsId: 'docker_hub'
                 }
             }
-            steps
-            {
-                sh "docker push mywebapp:${build_number}"
-            }
+            script
+                {
+                    def build_number = currentBuild.number
+
+                    docker.image.push("mywebapp:${build_number}")
+                }
 
                 
                 /*    // This step should not normally be used in your script. Consult the inline help for details.
