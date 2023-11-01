@@ -4,6 +4,10 @@ pipeline
     {
         label 'maven'
     }
+    tools
+    {
+        maven 'mvn-3.9.5'
+    }
     environment
     {
         SONAR_CRED = credentials('sonar_secret')
