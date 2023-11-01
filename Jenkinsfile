@@ -25,7 +25,7 @@ pipeline
             {
                 sh "mvn sonar:sonar \
                 -Dsonar.projectKey=maven-practice \
-                -Dsonar.host.url=http://54.206.68.118:9000 \
+                -Dsonar.host.url=http://52.64.92.59:9000 \
                 -Dsonar.login=${SONAR_CRED_PSW}"
             }
         }
