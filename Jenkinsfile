@@ -27,14 +27,17 @@ pipeline
         stage('sonarQube Code Check')
         {
             
-            
-                withCredentials([string(credentialsId: 'sonar_secret', variable: 'sonar_cred')]) 
+            steps
+            {
+                    withCredentials([string(credentialsId: 'sonar_secret', variable: 'sonar_cred')]) 
                 {
-                    sh '''  mvn sonar:sonar \\
+                    sh    "mvn sonar:sonar \\
                           -Dsonar.projectKey=maven-practice \\
                           -Dsonar.host.url=http://52.64.92.59:9000/ \\
-                          -Dsonar.login=${sonar_cred}'''
+                          -Dsonar.login=${sonar_cred}"
                 }
+            }
+                
                   /*sh '''  mvn sonar:sonar \\
                           -Dsonar.projectKey=maven-practice \\
                           -Dsonar.host.url=http://52.64.92.59:9000/ \\
