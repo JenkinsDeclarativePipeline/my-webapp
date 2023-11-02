@@ -9,6 +9,6 @@ node ('maven')
     }
     stage('Maven Build')
     {
-        sh '${mvn-3.9.5}/bin/mvn clean package'
+        sh "${mvn-3.9.5}/bin/mvn clean package"
     }
 }
