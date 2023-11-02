@@ -33,7 +33,7 @@ pipeline
                 {
                     sh    "mvn sonar:sonar \
                           -Dsonar.projectKey=maven-practice \
-                          -Dsonar.host.url=http://52.64.92.59:9000/ \
+                          -Dsonar.host.url=http://3.25.201.232:9000/ \
                           -Dsonar.login=${sonar_cred}"
                 }
             }
@@ -70,34 +70,22 @@ pipeline
         {
             agent
             {
-                docker
-                {
-    
-                    registryUrl 'https://hub.docker.com/'
-                    registryCredentialsId: 'docker_hub'
-                }
+                registryUrl 'https://hub.docker.com/'
+                registryCredentialsId 'docker_hub'
             }
             steps
             {
-                script
-                {
-                    def build_number = currentBuild.number
-
-                    docker.image.push("mywebapp:${build_number}")
-                }
+                echo "============Logged in=========="
             }
+        }
             
+    }
+}
 
-                
-                /*    // This step should not normally be used in your script. Consult the inline help for details.
+ /*    // This step should not normally be used in your script. Consult the inline help for details.
                     withDockerRegistry(credentialsId: 'docker_hub', url: 'https://hub.docker.com/') 
                     {
                         
                                 sh "docker push mywebapp:${build_number}"
                         
                     }*/
-                
-
-        }
-    }
-}
