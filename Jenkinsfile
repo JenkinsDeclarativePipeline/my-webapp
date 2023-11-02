@@ -70,8 +70,12 @@ pipeline
         {
             agent
             {
-                registryUrl 'https://hub.docker.com/'
+                docker
+                {
+                    registryUrl 'https://hub.docker.com/'
                 registryCredentialsId 'docker_hub'
+                }
+                
             }
             steps
             {
