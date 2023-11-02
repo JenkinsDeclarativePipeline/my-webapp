@@ -21,4 +21,9 @@ node ('maven')
                           -Dsonar.login=${sonar_cred}"
         }
     }
+    stage('Docker Build')
+    {
+        def build_number = currentBuild.number
+        docker.build("mywebapp:${build_number}")
+    }
 }
