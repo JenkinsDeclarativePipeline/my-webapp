@@ -33,6 +33,6 @@ node ('maven')
             sh "docker login -u uriyapraba -p ${dockerhub_secret}"
         }
         //def build_number = currentBuild.number
-        docker.push("mywebapp:${build_number}")
+        sh "docker.push("mywebapp:${build_number}")"
     }
 }
