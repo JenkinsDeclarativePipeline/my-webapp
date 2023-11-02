@@ -1,7 +1,7 @@
 node ('maven')
 {
     def mvn = tool name: 'mvn-3.9.5', type: 'maven'
-
+    def build_number = currentBuild.number
     stage('SCM Checkout')
     {
         checkout scmGit(branches: [[name: '*/master']], 
@@ -23,7 +23,12 @@ node ('maven')
     }
     stage('Docker Build')
     {
-        def build_number = currentBuild.number
+        //def build_number = currentBuild.number
         docker.build("mywebapp:${build_number}")
+    }
+    stage('Docker Build')
+    {
+        //def build_number = currentBuild.number
+        docker.push("mywebapp:${build_number}")
     }
 }
