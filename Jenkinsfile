@@ -12,7 +12,7 @@ pipeline
     {
 
         DOCKER_TAG = "0.1.2"
-        build_number = "currentBuild.number"
+        build_number = getBuildNumber()
     }
 
     stages
@@ -74,7 +74,7 @@ pipeline
                 docker
                 {
                     image 'mywebapp:${build_number'
-                    registryUrl 'https://www.docker.com/'
+                    registryUrl 'https://hub.docker.com/'
                     registryCredentialsId 'docker_hub'
                 }
                 
@@ -86,6 +86,11 @@ pipeline
         }
             
     }
+}
+def getBuildNumber()
+{
+    def buildNumber = currentBuild.number
+    return buildNumber
 }
 
  /*    // This step should not normally be used in your script. Consult the inline help for details.
