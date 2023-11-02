@@ -1,6 +1,6 @@
 node ('maven')
 {
-    tool name: 'mvn-3.9.5', type: 'maven'
+    def mvn = tool name: 'mvn-3.9.5', type: 'maven'
 
     stage('SCM Checkout')
     {
@@ -9,6 +9,6 @@ node ('maven')
     }
     stage('Maven Build')
     {
-        sh "${mvn-3.9.5}/bin/mvn clean package"
+        sh "${mvn}/bin/mvn clean package"
     }
 }
