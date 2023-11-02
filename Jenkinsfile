@@ -12,9 +12,9 @@ pipeline
     {
 
         DOCKER_TAG = "0.1.2"
-        build_number = currentBuild.number
+        build_number = "currentBuild.number"
     }
-    
+
     stages
     {
         stage('SCM checkout')
