@@ -13,6 +13,7 @@ pipeline
 
         DOCKER_TAG = "0.1.2"
     }
+    def build_number = currentBuild.number
     stages
     {
         stage('SCM checkout')
@@ -59,7 +60,6 @@ pipeline
             {     
                 script
                 {
-                    def build_number = currentBuild.number
 
                     docker.build("mywebapp:${build_number}")
                 }
@@ -72,8 +72,9 @@ pipeline
             {
                 docker
                 {
+                    image 'mywebapp:${build_number'
                     registryUrl 'https://hub.docker.com/'
-                registryCredentialsId 'docker_hub'
+                    registryCredentialsId 'docker_hub'
                 }
                 
             }
