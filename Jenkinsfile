@@ -13,7 +13,7 @@ pipeline
                 docker
                 {
                     image 'mywebapp:38'
-                    registryUrl 'https://hub.docker.com/'
+                    registryUrl 'https://index.docker.io'
                     registryCredentialsId 'docker_hub'
                 }
             }
