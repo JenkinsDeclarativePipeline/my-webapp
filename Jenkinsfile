@@ -11,4 +11,14 @@ node ('maven')
     {
         sh "${mvn}/bin/mvn clean package"
     }
+    stage('Sonar Quality Check')
+    {
+        withCredentials([string(credentialsId: 'sonar_secret', variable: 'sonar_cred')])
+        {
+                    sh    "mvn sonar:sonar \
+                          -Dsonar.projectKey=maven-practice \
+                          -Dsonar.host.url=http://3.25.201.232:9000/ \
+                          -Dsonar.login=${sonar_cred}"
+        }
+    }
 }
