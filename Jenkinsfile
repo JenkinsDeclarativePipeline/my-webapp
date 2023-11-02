@@ -74,7 +74,7 @@ pipeline
                 docker
                 {
                     image 'mywebapp:${build_number'
-                    registryUrl 'https://hub.docker.com/'
+                    registryUrl 'https://www.docker.com/'
                     registryCredentialsId 'docker_hub'
                 }
                 
