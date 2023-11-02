@@ -69,7 +69,7 @@ pipeline
         }
         stage('Docker Image Push')
         {
-            agent
+            /*agent
             {
                 docker
                 {
@@ -78,10 +78,13 @@ pipeline
                     registryCredentialsId 'docker_hub'
                 }
                 
-            }
+            }*/
             steps
             {
-                echo "============Logged in=========="
+                withDockerRegistry(credentialsId: 'docker_hub', url: 'https://hub.docker.com/') {
+                    
+                    echo "loggined"
+            }
             }
         }
             
