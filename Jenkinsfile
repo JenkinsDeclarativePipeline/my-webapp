@@ -31,8 +31,9 @@ node ('maven')
         withCredentials([string(credentialsId: 'dockerhub_secret', variable: 'dockerhub_secret')]) 
         {
             sh "docker login -u uriyapraba -p ${dockerhub_secret}"
+            docker.build("mywebapp:${build_number}")
         }
         //def build_number = currentBuild.number
-        sh "docker.push("mywebapp:${build_number}")"
+         //docker.build("mywebapp:${build_number}") 
     }
 }
