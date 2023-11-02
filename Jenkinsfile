@@ -81,10 +81,10 @@ pipeline
             }*/
             steps
             {
-                withDockerRegistry(credentialsId: 'docker_hub', url: 'https://hub.docker.com/') {
-                    
-                    echo "loggined"
-            }
+                wwithCredentials([string(credentialsId: 'dockerhub_secret', variable: 'docker_passwd')]) 
+                {
+                 sh "docker login -u uriyapraba -p ${docker_passwd}"       
+                }
             }
         }
             
