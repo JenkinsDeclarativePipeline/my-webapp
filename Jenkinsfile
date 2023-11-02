@@ -15,7 +15,7 @@ node ('maven')
     {
         withCredentials([string(credentialsId: 'sonar_secret', variable: 'sonar_cred')])
         {
-                    sh    "mvn sonar:sonar \
+                    sh    "${mvn}/bin/mvn sonar:sonar \
                           -Dsonar.projectKey=maven-practice \
                           -Dsonar.host.url=http://3.25.201.232:9000/ \
                           -Dsonar.login=${sonar_cred}"
