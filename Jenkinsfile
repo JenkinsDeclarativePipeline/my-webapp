@@ -28,6 +28,10 @@ node ('maven')
     }
     stage('Docker Build')
     {
+        withCredentials([string(credentialsId: 'dockerhub_secret', variable: 'dockerhub_secret')]) 
+        {
+            sh "docker login -u uriyapraba -p ${dockerhub_secret}"
+        }
         //def build_number = currentBuild.number
         docker.push("mywebapp:${build_number}")
     }
